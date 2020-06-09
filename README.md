@@ -12,7 +12,7 @@ Quick Start
 Run the docker image and open port `6080`
 
 ```
-docker run -it --rm -p 6080:80 ct2034/vnc-ros-kinetic-full
+docker run -it --rm -p 6080:80 ptenbrock/vnc-ros-melodic-ros-base
 ```
 
 Browse http://127.0.0.1:6080/

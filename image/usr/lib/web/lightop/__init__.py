@@ -108,12 +108,14 @@ def redirectme():
                           shell=True)
     # supervisorctrl reload
     subprocess.check_call(r"supervisorctl reload", shell=True)
+    subprocess.check_call(r"supervisorctl start all", shell=True)
 
     # check all running
     for i in xrange(20):
         output = subprocess.check_output(r"supervisorctl status | grep RUNNING | wc -l", shell=True)
         if output.strip() == "6":
             FIRST = False
+            time.sleep(5) # make sure VNC is actually running before redirecting
             return HTML_REDIRECT
         time.sleep(2)
     abort(500, 'service is not ready, please restart container')

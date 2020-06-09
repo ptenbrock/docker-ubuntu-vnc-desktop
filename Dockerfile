@@ -28,8 +28,10 @@ RUN chmod +x /tini
 ENV NOVNC_VERSION 1.1.0
 RUN curl -sSL https://github.com/novnc/noVNC/archive/v${NOVNC_VERSION}.tar.gz | tar xz -C / && mv /noVNC-${NOVNC_VERSION} /noVNC
 
-ADD image /
+ADD image/usr/lib/web/requirements.txt /usr/lib/web/requirements.txt
 RUN pip install setuptools wheel && pip install -r /usr/lib/web/requirements.txt
+
+ADD image /
 
 RUN cp /usr/share/applications/terminator.desktop /root/Desktop
 RUN echo "source /opt/ros/$ROS_DISTRO/setup.bash" >> /root/.bashrc
@@ -38,3 +40,4 @@ EXPOSE 80
 WORKDIR /root
 ENV SHELL=/bin/bash
 ENTRYPOINT ["/startup.sh"]
+CMD ["bash"]
