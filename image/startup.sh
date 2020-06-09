@@ -4,7 +4,6 @@ mkdir -p /var/run/sshd
 
 chown -R root:root /root
 mkdir -p /root/.config/pcmanfm/LXDE/
-cp /usr/share/doro-lxde-wallpapers/desktop-items-0.conf /root/.config/pcmanfm/LXDE/
 
 if [ -n "$VNC_PASSWORD" ]; then
     echo -n "$VNC_PASSWORD" > /.password1
